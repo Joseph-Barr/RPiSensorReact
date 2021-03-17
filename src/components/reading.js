@@ -1,9 +1,12 @@
-import {Component, React} from 'react';
+import {
+    Component,
+    React
+} from 'react';
 
 class Reading extends Component {
     constructor(props) {
         super(props);
-        
+
         this.state = {
             temperature: 0,
             humidity: 0,
@@ -31,21 +34,19 @@ class Reading extends Component {
                 // instead of a catch() block so that we don't swallow
                 // exceptions from actual bugs in components.
                 (error) => {
-                this.setState({
-                    error
-                });
+                    this.setState({
+                        error
+                    });
                 }
             )
     }
 
     render() {
-        return(
+        return (
             <div>
-
-                <h1> { `${this.state.temperature}°C` } </h1>
-                <h1> { `${this.state.humidity}%` } </h1>
-                <h2> { new Date(this.state.timestamp).toDateString() } </h2>
-                <h2> { new Date(this.state.timestamp).toLocaleTimeString() } </h2>
+                <h3> {`${new Date(this.state.timestamp).toDateString()}, ${new Date(this.state.timestamp).toLocaleTimeString()}`} </h3>
+                <h1> {`Temperature: ${this.state.temperature}°C`} </h1>
+                <h1> {`Humidity: ${this.state.humidity}%`} </h1>
             </div>
         );
     }
